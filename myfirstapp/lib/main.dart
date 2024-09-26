@@ -4,263 +4,178 @@
 //   runApp(MyApp());
 // }
 //
-// class MyApp extends StatefulWidget {
+// class MyApp extends StatelessWidget {
 //   @override
-//   _MyAppState createState() => _MyAppState();
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Navigation Example',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: HomeScreen(),
+//     );
+//   }
 // }
 //
-// class _MyAppState extends State<MyApp> {
-//   int _counter = 0;
+// class HomeScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Home Screen'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () {
+//             // Navigate to SecondScreen when tapped.
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (context) => SecondScreen()),
+//             );
+//           },
+//           child: Text('Go to Second Screen'),
+//         ),
+//       ),
+//     );
+//   }
+// }
 //
-//   void _incrementCounter() {
+// class SecondScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Second Screen'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () {
+//             // Navigate back to HomeScreen when tapped.
+//             Navigator.pop(context);
+//           },
+//           child: Text('Go back to Home Screen'),
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+//
+//
+//
+
+
+//
+// import 'package:flutter/material.dart';
+//
+// void main() => runApp(MyApp());
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: BottomNavBarExample(),
+//     );
+//   }
+// }
+//
+// class BottomNavBarExample extends StatefulWidget {
+//   @override
+//   _BottomNavBarExampleState createState() => _BottomNavBarExampleState();
+// }
+//
+// class _BottomNavBarExampleState extends State<BottomNavBarExample> {
+//   int _selectedIndex = 0;
+//
+//   static const List<Widget> _widgetOptions = <Widget>[
+//     Text('Home Screen'),
+//     Text('Search Screen'),
+//     Text('Profile Screen'),
+//   ];
+//
+//   void _onItemTapped(int index) {
 //     setState(() {
-//       _counter++;
+//       _selectedIndex = index;
 //     });
 //   }
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(title: Text('Flutter Container')),
-//         body: Center(
-//           child: Container(
-//             width: 100,
-//             height: 100,
-//             color: Colors.blue,
-//             child:Text('Hello world!') // Correct property name for color
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Bottom Navigation Example'),
+//       ),
+//       body: Center(
+//         child: _widgetOptions.elementAt(_selectedIndex),
+//       ),
+//       bottomNavigationBar: BottomNavigationBar(
+//         items: const <BottomNavigationBarItem>[
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.home), // Material icon for Home
+//             label: 'Home',
 //           ),
-//         ),
-//         floatingActionButton: FloatingActionButton(
-//           onPressed: _incrementCounter,
-//           child: Icon(Icons.add),
-//         ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.search), // Material icon for Search
+//             label: 'Search',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.person), // Material icon for Profile
+//             label: 'Profile',
+//           ),
+//         ],
+//         currentIndex: _selectedIndex,
+//         selectedItemColor: Colors.blue,
+//         onTap: _onItemTapped,
 //       ),
 //     );
 //   }
 // }
-
-//
-// import 'package:flutter/material.dart';
-//
-// void main() {
-//   runApp(MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text("Rows and Columns in Flutter"),
-//         ),
-//         body: Padding(
-//           padding: const EdgeInsets.all(16.0),
-//           child: Column(
-//             children: [
-//               Text(
-//                 "Column Example:",
-//                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//               ),
-//               Column(
-//                 // Column arranges widgets vertically
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Container(
-//                     color: Colors.blue,
-//                     padding: EdgeInsets.all(8),
-//                     child: Text(
-//                       "Item 1",
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                   ),
-//                   SizedBox(height: 10),
-//                   Container(
-//                     color: Colors.green,
-//                     padding: EdgeInsets.all(8),
-//                     child: Text(
-//                       "Item 2",
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                   ),
-//                   SizedBox(height: 10),
-//                   Container(
-//                     color: Colors.red,
-//                     padding: EdgeInsets.all(8),
-//                     child: Text(
-//                       "Item 3",
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               SizedBox(height: 30),
-//               Text(
-//                 "Row Example:",
-//                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//               ),
-//               Row(
-//                 // Row arranges widgets horizontally
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   Container(
-//                     color: Colors.orange,
-//                     padding: EdgeInsets.all(8),
-//                     child: Text(
-//                       "Item A",
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                   ),
-//                   Container(
-//                     color: Colors.purple,
-//                     padding: EdgeInsets.all(8),
-//                     child: Text(
-//                       "Item B",
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                   ),
-//                   Container(
-//                     color: Colors.teal,
-//                     padding: EdgeInsets.all(8),
-//                     child: Text(
-//                       "Item C",
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-// import 'package:flutter/material.dart';
-//
-// void main() {
-//   runApp(MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text("Scrollable Rows and Columns"),
-//         ),
-//         body: SingleChildScrollView(
-//           // This allows scrolling
-//           padding: EdgeInsets.all(16),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text(
-//                 "Scrollable Column Example:",
-//                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//               ),
-//               Column(
-//                 children: [
-//                   for (int i = 1; i <= 10; i++) // Generating items dynamically
-//                     Container(
-//                       color: i.isEven ? Colors.blue : Colors.green,
-//                       margin: EdgeInsets.symmetric(vertical: 8),
-//                       padding: EdgeInsets.all(16),
-//                       child: Text(
-//                         "Item $i",
-//                         style: TextStyle(color: Colors.white),
-//                       ),
-//                     ),
-//                 ],
-//               ),
-//               SizedBox(height: 30),
-//               Text(
-//                 "Scrollable Row Example:",
-//                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//               ),
-//               SingleChildScrollView(
-//                 scrollDirection: Axis.horizontal, // Horizontal scrolling
-//                 child: Row(
-//                   children: [
-//                     for (int i = 1; i <= 5; i++) // Generating items dynamically
-//                       Container(
-//                         color: i.isEven ? Colors.orange : Colors.purple,
-//                         margin: EdgeInsets.symmetric(horizontal: 8),
-//                         padding: EdgeInsets.all(16),
-//                         child: Text(
-//                           "Item $i",
-//                           style: TextStyle(color: Colors.white),
-//                         ),
-//                       ),
-//                   ],
-//                 ),
-//               ),
-//               SizedBox(height: 30),
-//               Text(
-//                 "Mixed Scrollable Widgets:",
-//                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//               ),
-//               Container(
-//                 height: 200,
-//                 child: ListView.builder(
-//                   itemCount: 20, // A longer list to demonstrate scrolling
-//                   itemBuilder: (context, index) {
-//                     return Container(
-//                       margin: EdgeInsets.symmetric(vertical: 8),
-//                       padding: EdgeInsets.all(16),
-//                       color: index.isEven ? Colors.red : Colors.teal,
-//                       child: Text(
-//                         "List Item ${index + 1}",
-//                         style: TextStyle(color: Colors.white),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 
 
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Scrollable Container')),
-        body: SingleChildScrollView(
-          child: Column(
-            children: List.generate(
-              20, // Number of containers to display
-                  (index) => Container(
-                margin: EdgeInsets.all(10), // Spacing between containers
-                height: 100,
-                color: Colors.primaries[index % Colors.primaries.length], // Different colors for each container
-                child: Center(
-                  child: Text(
-                    'Container $index',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
-              ),
-            ),
-          ),
+      home: CounterExample(),
+    );
+  }
+}
+
+class CounterExample extends StatefulWidget {
+  @override
+  _CounterExampleState createState() => _CounterExampleState();
+}
+
+class _CounterExampleState extends State<CounterExample> {
+  int _counter = 0;
+
+  // Method to increment the counter and update the UI
+  void _incrementCounter() {
+    setState(() {
+      _counter++; // Updating the state
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('setState Example'),
+      ),
+      body: Center(
+        child: Text(
+          'Counter: $_counter',
+          style: TextStyle(fontSize: 24),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter, // Button to increment the counter
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
       ),
     );
   }
